@@ -60,14 +60,12 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
-        
-     - name: Import external feeds
+     - name: Clone adguardhome
        working-directory: ./openwrt
        run: |
          git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/lienol
          git clone "your_github_link" package/"your_folder_name"      
-        
-     - name: Import external feeds
+     - name: Clone OpenClash
        working-directory: ./openwrt
        run: |
          git clone https://github.com/vernesong/OpenClash.git package/lienol
@@ -79,7 +77,6 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
-        
      - name: Import external feeds
        working-directory: ./openwrt
        run: |
